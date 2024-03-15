@@ -60,6 +60,16 @@ describe('ToDoList', () => {
       expect(tasks[2]).toEqual(anyUpdateTask)
     })
 
+    test('Should only Update the TargetDate of the task', () => {
+      const todoInstance = new ToDoList()
+      const dateUpdateTask = {
+        targetDate: '66/66/6666',
+      }
+      todoInstance.add(anyTask)
+      todoInstance.updateTask(0, dateUpdateTask)
+      const tasks = todoInstance.getTasks()
+      expect(tasks[0]['targetDate']).toEqual(dateUpdateTask['targetDate'])
+    })
   })
 
 })
