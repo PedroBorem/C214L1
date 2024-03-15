@@ -10,6 +10,15 @@ const anyTask = {
   subTasks: []
 }
 
+const anyUpdateTask = {
+  title: 'Updated_title',
+  description: 'Updated_description',
+  targetDate: '16/03/2024',
+  type: 'Updated_type',
+  priority: '1',
+  subTasks: []
+}
+
 describe('ToDoList', () => {
   describe('Testing add', () => {
     test('should add a new task to the list', () => {
@@ -29,4 +38,71 @@ describe('ToDoList', () => {
       expect(tasks).toEqual([])
     })
   })
+
+  describe('Testing Update', () => {
+    test('Should Update the only Task', () => {
+      const todoInstance = new ToDoList()
+      todoInstance.add(anyTask)
+      todoInstance.updateTask(0, anyUpdateTask)
+      const tasks = todoInstance.getTasks()
+      expect(tasks[0]).toEqual(anyUpdateTask)
+    })
+
+    test('Should only Update the index=2 Task', () => {
+      const todoInstance = new ToDoList()
+      todoInstance.add(anyTask)
+      todoInstance.add(anyTask)
+      todoInstance.add(anyTask)
+      todoInstance.updateTask(2, anyUpdateTask)
+      const tasks = todoInstance.getTasks()
+      expect(tasks[0]).toEqual(anyTask)
+      expect(tasks[1]).toEqual(anyTask)
+      expect(tasks[2]).toEqual(anyUpdateTask)
+    })
+
+    test('Should only Update the TargetDate of the task', () => {
+      const todoInstance = new ToDoList()
+      const dateUpdateTask = {
+        targetDate: '66/66/6666',
+      }
+      todoInstance.add(anyTask)
+      todoInstance.updateTask(0, dateUpdateTask)
+      const tasks = todoInstance.getTasks()
+      expect(tasks[0]['targetDate']).toEqual(dateUpdateTask['targetDate'])
+    })
+  })
+
+  describe('Testing Remove', () => {
+    test('Should Remove the only Task', () => {
+      const todoInstance = new ToDoList()
+      todoInstance.add(anyTask)
+      todoInstance.removeTask(0)
+      const tasks = todoInstance.getTasks()
+      expect(tasks).toEqual([])
+    })
+
+    test('Should only Remove one Task', () => {
+      const todoInstance = new ToDoList()
+      todoInstance.add(anyTask)
+      todoInstance.add(anyTask)
+      todoInstance.add(anyTask)
+      todoInstance.removeTask(1)
+      const tasks = todoInstance.getTasks()
+      expect(tasks.length).toEqual(2)
+
+    })
+
+    test('Should only Remove index=1 Task', () => {
+      const todoInstance = new ToDoList()
+      todoInstance.add(anyTask)
+      todoInstance.add(anyUpdateTask)
+      todoInstance.add(anyTask)
+      todoInstance.removeTask(1)
+      const tasks = todoInstance.getTasks()
+      expect(tasks).toEqual([anyTask,anyTask])
+
+    })
+
+  })
+
 })
