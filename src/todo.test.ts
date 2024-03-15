@@ -10,6 +10,15 @@ const anyTask = {
   subTasks: []
 }
 
+const anyUpdateTask = {
+  title: 'Updated_title',
+  description: 'Updated_description',
+  targetDate: '16/03/2024',
+  type: 'Updated_type',
+  priority: '1',
+  subTasks: []
+}
+
 describe('ToDoList', () => {
   describe('Testing add', () => {
     test('should add a new task to the list', () => {
@@ -29,4 +38,28 @@ describe('ToDoList', () => {
       expect(tasks).toEqual([])
     })
   })
+
+  describe('Testing Update', () => {
+    test('Should Update the only Task', () => {
+      const todoInstance = new ToDoList()
+      todoInstance.add(anyTask)
+      todoInstance.updateTask(0, anyUpdateTask)
+      const tasks = todoInstance.getTasks()
+      expect(tasks[0]).toEqual(anyUpdateTask)
+    })
+
+    test('Should only Update the index=2 Task', () => {
+      const todoInstance = new ToDoList()
+      todoInstance.add(anyTask)
+      todoInstance.add(anyTask)
+      todoInstance.add(anyTask)
+      todoInstance.updateTask(2, anyUpdateTask)
+      const tasks = todoInstance.getTasks()
+      expect(tasks[0]).toEqual(anyTask)
+      expect(tasks[1]).toEqual(anyTask)
+      expect(tasks[2]).toEqual(anyUpdateTask)
+    })
+
+  })
+
 })
