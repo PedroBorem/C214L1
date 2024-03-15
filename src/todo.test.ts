@@ -72,4 +72,37 @@ describe('ToDoList', () => {
     })
   })
 
+  describe('Testing Remove', () => {
+    test('Should Remove the only Task', () => {
+      const todoInstance = new ToDoList()
+      todoInstance.add(anyTask)
+      todoInstance.removeTask(0)
+      const tasks = todoInstance.getTasks()
+      expect(tasks).toEqual([])
+    })
+
+    test('Should only Remove one Task', () => {
+      const todoInstance = new ToDoList()
+      todoInstance.add(anyTask)
+      todoInstance.add(anyTask)
+      todoInstance.add(anyTask)
+      todoInstance.removeTask(1)
+      const tasks = todoInstance.getTasks()
+      expect(tasks.length).toEqual(2)
+
+    })
+
+    test('Should only Remove index=1 Task', () => {
+      const todoInstance = new ToDoList()
+      todoInstance.add(anyTask)
+      todoInstance.add(anyUpdateTask)
+      todoInstance.add(anyTask)
+      todoInstance.removeTask(1)
+      const tasks = todoInstance.getTasks()
+      expect(tasks).toEqual([anyTask,anyTask])
+
+    })
+
+  })
+
 })
