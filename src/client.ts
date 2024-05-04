@@ -1,6 +1,6 @@
-import { ToDoListAdapter } from './src/adapters/ToDoListAdapter'
-import { Task } from './src/models/Task'
-import { ToDoList } from './src/services/TodoList'
+import { ToDoListAdapter } from './adapters/ToDoListAdapter'
+import { Task } from './models/Task'
+import { ToDoList } from './services/TodoList'
 
 const anyTask: Task = {
   id: 1,
