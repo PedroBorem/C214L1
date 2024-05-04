@@ -1,0 +1,50 @@
+#root {
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+.box {
+  background-color: gray;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  flex-direction: column;
+}
+
+.title {
+  /* position: absolute; */
+  top: 0;
+  width: 50vw;
+  color: #FFF;
+}
+
+.select-action {
+  width: 50vw;
+}
+
+.input-div {
+  width: 20vw;
+  align-content: center;
+  justify-content: space-between;
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  width: 50vw;
+  height: 50vh;
+  background-color: white;
+  color: #000;
+  margin: auto;
+}
+
+.default-input-size {
+  width: "95%",
+}
